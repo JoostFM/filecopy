@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 public class Program
 {
-    public static IConfiguration Configuration { get; set; }
+    public static IConfiguration Configuration { get; private set; }
 
     [STAThread]
     static void Main()

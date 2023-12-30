@@ -1,8 +1,3 @@
-
-
-using Microsoft.Extensions.Configuration;
-using System.Configuration.Internal;
-
 namespace FileCopy.Wif
 {
     public partial class Form1 : Form
@@ -14,9 +9,10 @@ namespace FileCopy.Wif
 
         private void BtnSelect_Click(object sender, EventArgs e)
         {
-            string sourcefolder = Program.Configuration["sourcefolder"];
+            string sourcefolder = Program.Configuration["sourcefolder"] ?? throw new ArgumentException("parameter 'sourcefolder' missing"); ;
             string targetfolder = Program.Configuration["targetfolder"];
             string newfilename = Program.Configuration["newfilename"];
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Selecteer een bestand";
             openFileDialog.InitialDirectory = sourcefolder; // Stel het initiële pad in
