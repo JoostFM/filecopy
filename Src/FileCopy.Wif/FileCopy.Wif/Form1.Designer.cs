@@ -33,7 +33,7 @@
             // 
             // BtnSelect
             // 
-            BtnSelect.Location = new Point(90, 64);
+            BtnSelect.Location = new Point(12, 12);
             BtnSelect.Name = "BtnSelect";
             BtnSelect.Size = new Size(75, 23);
             BtnSelect.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(259, 186);
+            ClientSize = new Size(872, 814);
             Controls.Add(BtnSelect);
             Name = "Form1";
             Text = "Form1";
