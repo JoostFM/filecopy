@@ -23,8 +23,6 @@ internal class Program
             .WriteTo.File(@"../../logs/log-.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
-
-
         IHostBuilder CreateHostBuilder(string[] args) =>
                Host.CreateDefaultBuilder(args)
                .UseSerilog((hostingContext, loggerConfiguration) =>
@@ -35,36 +33,15 @@ internal class Program
                    services.AddTargetServicesCollection(configuration);
                    services.AddTransient<IFileSystem, FileSystem>();
                    services.AddTransient<Form1>();
-                   //services.AddApiServiceCollections();
-                   //services.ConfigInfraServicesCollection();
-                   //services.Configure<ISettingsService>(configuration.GetSection("SettingsService"));
                });
 
         var host = CreateHostBuilder(args).Build();
 
-
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
+
         var mainForm = host.Services.GetRequiredService<Form1>();
+
         Application.Run(mainForm);
     }
 }
-
-//public class Program
-//{
-//    public static IConfiguration Configuration { get; private set; }
-
-//    [STAThread]
-//    static void Main()
-//    {
-//        var builder = new ConfigurationBuilder()
-//            .SetBasePath(Directory.GetCurrentDirectory())
-//            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-//        Configuration = builder.Build();
-
-//        Application.EnableVisualStyles();
-//        Application.SetCompatibleTextRenderingDefault(false);
-//        Application.Run(new Form1());
-//    }
-//}

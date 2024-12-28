@@ -2,6 +2,7 @@
 
 namespace FileCopy.Wif.Top100Data;
 
-public interface IGoogleSheetsService : ITop100DataService
+public  interface ITop100DataService
 {
+    List<TrackData> ToList();
 }
