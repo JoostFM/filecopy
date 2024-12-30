@@ -5,12 +5,22 @@ namespace FileCopy.Wif.Targets;
 
 public interface IArtworkTargetService : ITarget
 {
+    Task<bool> CheckAsync(string filename);
 }
 
 public class ArtworkTargetService(IFileSystem fileSystem,
     IOptions<ArtworkSettingsOptions> options) : IArtworkTargetService
 {
     private readonly ArtworkSettingsOptions _options = options.Value;
+
+    public async Task<bool> CheckAsync(string filename)
+    {
+        string sourcePath = Path.Combine(_options.SourceLocation, filename + ".jpg");
+
+        await Task.CompletedTask;
+
+        return  fileSystem.File.Exists(sourcePath);
+    }
 
     public async Task UpdateAsync(string filename)
     {

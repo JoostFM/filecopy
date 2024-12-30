@@ -8,6 +8,7 @@ public static class TargetServiceCollection
     {
         services.Configure<ArtworkSettingsOptions>(configuration.GetSection("ArtworkSettings"));
         services.AddTransient<IArtworkTargetService, ArtworkTargetService>();
+        services.AddTransient<INowPlayingTargetService, NowPlayingTargetService>();
         return services;
     }
 }

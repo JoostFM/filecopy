@@ -76,7 +76,7 @@
             // 
             TxtlblArtistTitleValue.Location = new Point(212, 6);
             TxtlblArtistTitleValue.Name = "TxtlblArtistTitleValue";
-            TxtlblArtistTitleValue.Size = new Size(489, 27);
+            TxtlblArtistTitleValue.Size = new Size(470, 27);
             TxtlblArtistTitleValue.TabIndex = 2;
             // 
             // lblArtistTitle
@@ -110,7 +110,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(821, 495);
             listBox1.TabIndex = 2;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox1.SelectedIndexChanged += ListBox1_SelectedIndexChanged;
             // 
             // Form1
             // 
