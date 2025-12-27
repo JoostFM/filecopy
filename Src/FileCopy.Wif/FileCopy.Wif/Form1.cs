@@ -10,14 +10,14 @@ namespace FileCopy.Wif
     {
         private readonly IArtworkTargetService _artworkTargetService;
         private readonly INowPlayingTargetService _nowPlayingTargetService;
-        private readonly ITop100_2024DataService _googleSheetsService;
+        private readonly ITop100DataService _googleSheetsService;
         private readonly ArtworkSettingsOptions _options;
         private bool _isPopulatingListBox = false;
 
 
         public Form1(IArtworkTargetService artworkTargetService,
             INowPlayingTargetService nowPlayingTargetService,
-            ITop100_2024DataService googleSheetsService,
+            ITop100DataService googleSheetsService,
             IOptions<ArtworkSettingsOptions> options)
         {
             InitializeComponent();

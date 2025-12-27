@@ -2,7 +2,7 @@
 using Google.Apis.Sheets.v4;
 using Microsoft.Extensions.Options;
 
-namespace FileCopy.Wif.Top100Data;
+namespace FileCopy.Wif.Top100Data.GoogleSheet;
 
 internal class GoogleSheetsService(IGoogleSheetsHelper googleSheetsHelper, IOptions<Top100DataOptions> options) : IGoogleSheetsService
 {

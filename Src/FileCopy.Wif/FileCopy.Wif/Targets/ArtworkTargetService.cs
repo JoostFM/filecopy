@@ -15,7 +15,8 @@ public class ArtworkTargetService(IFileSystem fileSystem,
 
     public async Task<bool> CheckAsync(string filename)
     {
-        string sourcePath = Path.Combine(_options.SourceLocation, filename + ".jpg");
+        var safeFilename = string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        string sourcePath = Path.Combine(_options.SourceLocation, safeFilename + ".jpg");
 
         await Task.CompletedTask;
 
@@ -24,7 +25,8 @@ public class ArtworkTargetService(IFileSystem fileSystem,
 
     public async Task UpdateAsync(string filename)
     {
-        string sourcePath = Path.Combine(_options.SourceLocation, filename + ".jpg");
+        var safeFilename = string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        string sourcePath = Path.Combine(_options.SourceLocation, safeFilename + ".jpg");
         using var sourceStream = fileSystem.File.OpenRead(sourcePath);
 
         if (fileSystem.File.Exists(sourcePath))
