@@ -1,0 +1,37 @@
+﻿using FileCopy.Wif.Models;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FileCopy.Wif.Top100Data
+{
+
+    public class Top100DataService2025 : ITop100DataService
+    {
+        public List<TrackData> ToList()
+        {
+            var returnValue = new List<TrackData>();
+            var lines = Data.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var line in lines)
+            {
+                var value = line.Split("\t");
+                _ = int.TryParse(value[0].ToString(), out int position);
+                TrackData trackData = new()
+                {
+                    Position = position,
+                    Artist = value[3].ToString(),
+                    Title = value[4].ToString()
+                };
+
+                returnValue.Add(trackData);
+            }
+
+            return [.. returnValue.OrderByDescending(x => x.Position)];
+        }
+
+        private string Data => "1\t3\t(+2)\tLuther Vandross\tNever Too Much\r\n2\t1\t(-1)\tThe B. B. & Q. Band\tDreamer\r\n3\t10\t(+7)\tPlanet Patrol\tPlay At Your Own Risk\r\n4\t19\t(+15)\tThe S.O.S. Band\tJust Be Good To Me\r\n5\t4\t(-1)\tShannon\tLet The Music Play\r\n6\t21\t(+15)\tMan Parrish\tBoogie Down (Bronx)\r\n7\t7\t(-)\tD-Train\tYou're The One For Me\r\n8\t2\t(-6)\tAdvance\tTake Me To The Top\r\n9\t5\t(-4)\tStone \tTime\r\n10\t6\t(-4)\tCaptain Rapp\tBad Times (I Can't Stand It)\r\n11\t14\t(+3)\tFatback Band\tIs This The Future?\r\n12\t49\t(+37)\tMelba Moore\tLove's Comin' At Ya\r\n13\t12\t(-1)\tC.O.D.\tIn The Bottle\r\n14\tNIET IN LIJST\tNIEUW!!!\tCherelle & Alexander O'Neal\tSaturday Love\r\n15\t59\t(+44)\tDouble Vision\tClock On The Wall\r\n16\t51\t(+35)\tNewcleus\tJam On It\r\n17\t25\t(+8)\tAlexander O'Neal\tCriticize\r\n18\t11\t(-7)\tSKYY\tShow Me The Way\r\n19\t39\t(+20)\t52nd Street\tTell Me (How It Feels)\r\n20\t65\t(+45)\tLoose Ends \tHangin' On A String\r\n21\t45\t(+24)\tXena\tOn The Upside\r\n22\t56\t(+24)\tChaka Khan\tI Feel For You\r\n23\tNIET IN LIJST\tNIEUW!!!\tD-Train\tMusic\r\n24\t64\t(+40)\tJeffrey Osborne\tPlane Love\r\n25\t31\t(+6)\tWorld Premiere\tShare The Night\r\n26\tNIET IN LIJST\tNIEUW!!!\tKool & The Gang\tFresh\r\n27\tNIET IN LIJST\tNIEUW!!!\tAfrika Bambaataa & SSF\tPlanet Rock\r\n28\tNIET IN LIJST\tNIEUW!!!\tMidnight Star\tMidas Touch\r\n29\t27\t(-2)\tChocolate Milk\tWho's Getting It Now\r\n30\t22\t(-8)\tThe Bar-Kays\tShe Talks To Me With Her Body\r\n31\t60\t(+29)\tEvelyn King\tI'm In Love\r\n32\tNIET IN LIJST\tNIEUW!!!\tLove Club\tHot Summer Nights\r\n33\tNIET IN LIJST\tNIEUW!!!\tLuther Vandross\tFor The Sweetness Of Your Love\r\n34\t43\t(+9)\tThe S.O.S. Band\tThe Finest\r\n35\t87\t(+52)\tTimex Social Club\tRumors\r\n36\t52\t(+16)\tPink Rhythm\tCan't Get Enough Of Your Love\r\n37\t35\t(-2)\tCherelle \tWhen You Look In My Eyes\r\n38\t13\t(-25)\tDayton\tThe Sound Of Music\r\n39\tNIET IN LIJST\tNIEUW!!!\tGrandmaster Flash\tWhite Lines\r\n40\tNIET IN LIJST\tNIEUW!!!\tLinda Lewis\tClass/Style (I've Got It)\r\n41\tNIET IN LIJST\tNIEUW!!!\tStarpoint\tObject Of My Desire\r\n42\tNIET IN LIJST\tNIEUW!!!\tLuther Vandross\tSuper Lady\r\n43\t68\t(+25)\tRitchie Family\tI'll Do My Best (For You Baby)\r\n44\tNIET IN LIJST\tNIEUW!!!\tAtlantic Starr\tSilver Shadow\r\n45\tNIET IN LIJST\tNIEUW!!!\tChange, Luther Vandross\tThe Glow Of Love\r\n46\t57\t(+11)\tChemise\tShe Can't Love You\r\n47\tNIET IN LIJST\tNIEUW!!!\tCurtis Hairston\tI Want Your Lovin' (Just A Little Bit)\r\n48\tNIET IN LIJST\tNIEUW!!!\tD-Train\tKeep On\r\n49\t80\t(+31)\tKeath Sweat\tI Want Her\r\n50\tNIET IN LIJST\tNIEUW!!!\tKleeer\tNever Cry Again\r\n51\tNIET IN LIJST\tNIEUW!!!\tMantronix\tScream\r\n52\t33\t(-19)\tShannon\tGive Me Tonight\r\n53\t88\t(+35)\tTotal Contrast\tTakes A Little Time\r\n54\tNIET IN LIJST\tNIEUW!!!\tCheryl Lynn\tEncore\r\n55\tNIET IN LIJST\tNIEUW!!!\tAtlantic Starr\tYou Hit The Spot\r\n56\t82\t(+26)\tPatrice Rushen \tForget Me Nots\r\n57\tNIET IN LIJST\tNIEUW!!!\tThe B. B. & Q. Band\tStarlette\r\n58\tNIET IN LIJST\tNIEUW!!!\tAurra\tLike I Like It\r\n59\t98\t(+39)\tGwen McCrae\tKeep The Fire Burning\r\n60\t8\t(-52)\tKashif\tI Just Gotta Have You\r\n61\tNIET IN LIJST\tNIEUW!!!\tHoward Johnson\tLet's Take Time Out\r\n62\t47\t(-15)\tGayle Adams\tLove Fever\r\n63\tNIET IN LIJST\tNIEUW!!!\tHigh Fashion\tHold On\r\n64\tNIET IN LIJST\tNIEUW!!!\tThe S.O.S. Band\tNo One's Gonna Love You\r\n65\tNIET IN LIJST\tNIEUW!!!\tSharon Redd\tCan You Handle It\r\n66\tNIET IN LIJST\tNIEUW!!!\tVesta Williams\tOnce Bitten Twice Shy\r\n67\tNIET IN LIJST\tNIEUW!!!\tCharades\tGimme The Funk\r\n68\t44\t(-24)\tUnlimited Touch\tSearching To Find The One\r\n69\tNIET IN LIJST\tNIEUW!!!\tConway Brothers\tTurn It Up\r\n70\t20\t(-50)\tChange\tYou Are My Melody\r\n71\tNIET IN LIJST\tNIEUW!!!\tShalamar\tI Can Make You Feel Good\r\n72\t34\t(-38)\tSurface\tFalling In Love\r\n73\t86\t(+13)\tTeena Marie\tSquare Biz\r\n74\t28\t(-46)\tCool Runners\tPlay The Game\r\n75\t32\t(-43)\tRene & Angela\tI'll Be Good\r\n76\t89\t(+13)\tVaughan Mason\tBounce, Rock, Skate, Roll\r\n77\tNIET IN LIJST\tNIEUW!!!\tGino Soccio\tTry It Out\r\n78\tNIET IN LIJST\tNIEUW!!!\tEarth, Wind & Fire\tIn The Stone\r\n79\t92\t(+13)\tLakeside\tFantastic Voyage\r\n80\tNIET IN LIJST\tNIEUW!!!\tPeter Jacques Band\tThis Night\r\n81\t71\t(-10)\tToney Lee\tReach Up\r\n82\tNIET IN LIJST\tNIEUW!!!\tVal Young\tSeduction\r\n83\tNIET IN LIJST\tNIEUW!!!\tThe Gap Band\tOutstanding\r\n84\tNIET IN LIJST\tNIEUW!!!\tJenny Burton\tRemember What You Like\r\n85\tNIET IN LIJST\tNIEUW!!!\tBooker Newberry III\tLove Town\r\n86\tNIET IN LIJST\tNIEUW!!!\tChange\tLet's Go Together\r\n87\tNIET IN LIJST\tNIEUW!!!\tCheryl Lynn\tGot To Be Real\r\n88\tNIET IN LIJST\tNIEUW!!!\tColonel Abrams\tTrapped\r\n89\tNIET IN LIJST\tNIEUW!!!\tCurtis Hairston\tThe Morning After\r\n90\tNIET IN LIJST\tNIEUW!!!\tGeorge Duke\tShine On\r\n91\t17\t(-74)\tG.L.O.B.E. & The Whizkid\tPlay That Beat\r\n92\tNIET IN LIJST\tNIEUW!!!\tTeddy Riley Featuring Guy\tMy Fantasy\r\n93\tNIET IN LIJST\tNIEUW!!!\tJocelyn Brown\tSomebody Else's Guy\r\n94\t40\t(-54)\tOliver Cheatham\tGet Down Saturday Night\r\n95\t53\t(-42)\tRaw Silk\tJust In Time\r\n96\tNIET IN LIJST\tNIEUW!!!\tRick James\tGlow\r\n97\tNIET IN LIJST\tNIEUW!!!\tShalamar\tTake That To The Bank\r\n98\tNIET IN LIJST\tNIEUW!!!\tCameo\tAttack Me With Your Love\r\n99\tNIET IN LIJST\tNIEUW!!!\tGwen Guthrie\tIt Should Have Been You\r\n100\t70\t(-30)\tThe System\tThis Is For You";
+    }
+}
